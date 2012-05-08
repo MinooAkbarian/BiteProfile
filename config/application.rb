@@ -2,7 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-config.filter_parameters += [:password, :password_confirmation]
+# moved this line down.....config.filter_parameters += [:password, :password_confirmation]
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -57,5 +57,7 @@ module BiteProfile
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    config.filter_parameters += [:password, :password_confirmation]
   end
 end
