@@ -8,11 +8,16 @@ gem 'devise'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails', '2.9.0'
+  gem 'rspec-rails', '2.6.1.beta1'
 end
 
 group :production do
   gem 'pg'
+end
+
+group :test do
+  gem 'sqlite3'
+  gem 'rspec', '2.6'
 end
 
   
