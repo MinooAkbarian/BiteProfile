@@ -21,4 +21,6 @@ describe User do
   it "needs a name" do
     @user.name.should == 'Minoo'
   end
+  
+  it "needs an email"
 end

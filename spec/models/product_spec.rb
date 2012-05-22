@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe Product do
-  pending "add some examples to (or delete) #{__FILE__}"
+  #relationships
+  it 'Should have an user'
+  
+  #attributes
+  it 'Should have a name'
 end
