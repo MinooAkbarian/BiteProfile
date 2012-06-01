@@ -11,13 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120531235337) do
-
-  create_table "allergens", :force => true do |t|
-    t.string   "allergen_name"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
+ActiveRecord::Schema.define(:version => 20120522214434) do
 
   create_table "allergies", :force => true do |t|
     t.integer  "allergable_id"
