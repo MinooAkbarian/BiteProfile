@@ -1,4 +1,4 @@
 class Allergen < ActiveRecord::Base
-  attr_accessible :allergen_name
+  attr_accessible :name
   belongs_to :allergy
 end
