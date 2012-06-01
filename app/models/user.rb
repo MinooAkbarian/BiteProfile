@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   
   has_many :products
+  has_many :allergies, :as => :allergable
   validates_presence_of :name
+  validates_length_of :name, :minimum => 3
   validates_uniqueness_of :name, :email, :case_sensitive => false
   
 end
