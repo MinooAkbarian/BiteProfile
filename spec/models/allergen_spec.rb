@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe Allergen do
   before do
    @user = User.create(:name => 'minoo', :email => 'biteprofile@gmail.com', :password => 'letstest')
