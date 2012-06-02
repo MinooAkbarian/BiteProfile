@@ -14,4 +14,9 @@ class User < ActiveRecord::Base
   validates_length_of :name, :minimum => 3
   validates_uniqueness_of :name, :email, :case_sensitive => false
   
+  def allergic_to?(allergen)
+    self.allergies.each do |allergy|
+      (return true) if (allergy.allergen.name == allergen) 
+    end
+  end
 end

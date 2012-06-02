@@ -17,4 +17,7 @@ describe Allergen do
     @allergy2.allergen.name.should == 'milk'
   end
 
+  it 'should have an array of products'
+  it 'shoudl have an array of users'
+  
 end
