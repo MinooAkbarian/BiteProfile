@@ -15,7 +15,7 @@ describe Allergy do
       @user.allergies.class.should == Array
   end
   
-  it "Should not get saved without an allergen"
+  it "Should not get saved without an allergen" 
   
   it "should find allergy in an array of allergies from an allergen" do
     Allergy.find_from_allergen([@allergy1, @allergy2], 'nuts').should == [@allergy1]
