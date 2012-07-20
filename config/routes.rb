@@ -1,7 +1,9 @@
 BiteProfile::Application.routes.draw do
   resources :products
 
-  get "home/index"
+  match "/index" => "home#index"
+  
+  match "/panel" => "home#panel"
 
   devise_for :users
 
