@@ -7,8 +7,7 @@ describe User do
     @user1 = User.create(:name => 'mo', :email => 'biteprofile2@gmail.com', :password => 'letstest')
     @user = User.create(:name => 'minoo', :email => 'biteprofile@gmail.com', :password => 'letstest')
     @product = Product.create(:name => 'bread', :user_id => @user.id)
-    @allergy = Allergy.create(:allergable_id => @user.id, :allergable_type => @user.class.name)
-    @allergen = Allergen.create(:name => 'milk', :allergy_id => @allergy.id)
+    @allergy = Allergy.create(:allergable_id => @user.id, :allergable_type => @user.class.name, :allergen => 'milk')
   end
   
   it "Should have an array of products" do
@@ -63,7 +62,9 @@ describe User do
     @user.allergic_to?('nuts').should == false
   end
   
-  it 'should never retrun nil when checking for allergen'
+  it 'should never retrun nil when checking for allergen' do
+    @user.allergic_to?('').should_not be_nil
+  end
 end
 
 

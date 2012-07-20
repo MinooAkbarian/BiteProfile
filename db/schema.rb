@@ -13,13 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20120607005016) do
 
-  create_table "allergens", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "allergy_id"
-  end
-
   create_table "allergies", :force => true do |t|
     t.integer  "allergable_id"
     t.string   "allergable_type"
