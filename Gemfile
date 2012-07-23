@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
-
+# Minoo adding bootstrap gem...
+gem 'bootstrap-sass'
 gem 'devise'
 
 # Bundle edge Rails instead:
