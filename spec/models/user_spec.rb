@@ -5,7 +5,7 @@ describe User do
   #relationships
   before do
     @user1 = User.create(:name => 'mo', :email => 'biteprofile2@gmail.com', :password => 'letstest')
-    @user = User.create(:name => 'minoo', :email => 'biteprofile@gmail.com', :password => 'letstest')
+    @user = User.create(:name => 'minoo', :email => 'biteprofile@gmail.com', :password => 'letstest', :image_url => 'image/url')
     @product = Product.create(:name => 'bread', :user_id => @user.id)
     @allergy = Allergy.create(:allergable_id => @user.id, :allergable_type => @user.class.name, :allergen => 'milk')
   end
@@ -64,6 +64,11 @@ describe User do
   
   it 'should never retrun nil when checking for allergen' do
     @user.allergic_to?('').should_not be_nil
+  end
+  
+  it 'should have an image url' do
+    @user.image_url.should_not be_nil
+    @user.image_url.should == 'image/url'
   end
 end
 

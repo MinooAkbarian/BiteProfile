@@ -65,64 +65,37 @@
              <!-- Carousel items -->
              <div class="carousel-inner">
                
-               <ul class="thumbnails">
-                 <!--active items-->
-                 <div class="active item">
-  
-                 <li class="span4">
-                   <div class="thumbnail">
-                   <%= image_tag("bread.jpg", :alt => "Bread") %>
-                   <h5>Protein Bread</h5>
-                   <p>Found at: TJ's</p>
-                   </div>
-                 </li>
-                 
-                 <li class="span4">
-                    <div class="thumbnail">
-                    <%= image_tag("akmak.jpg", :alt => "AkMak") %>
-                    <h5>AkMak Cracker</h5>
-                    <p>Found at TJ's</p>
-                    </div>
-                  </li>
-               
-                  
-                  <li class="span4">
-                     <div class="thumbnail">
-                     <%= image_tag("quinoa.jpg", :alt => "Quinoa") %>
-                     <h5>Quinoa Pasta</h5>
-                     <p>Found at TJ's</p>
-                     </div>
-                   </li>
+               <ul class="thumbnails">   
+              <% @products_collection.each do |group| %>                
+                 <% if group == @products_collection.first %>
+                   <!--active items-->
+                   <div class="active item"> 
+                   <% group.each do |product|%>
+                     <li class="span4">
+                       <div class="thumbnail">
+                       <%= image_tag(product.image_url, :alt => product.name) %>
+                       <h5><%= product.name %></h5>
+                       <p>Found at: <%= product.store_name %></p>
+                       </div>
+                     </li>                 
+                   <% end %>                 
+                   </div> <!--end of active item-->         
                    
-                </div> <!--end of active item-->         
-                 
-                <!--inactive items-->
-                <div class="item"> 
-                  <li class="span4">
-                    <div class="thumbnail">
-                    <%= image_tag("cheesepuff.jpg", :alt => "Cheese Puff") %>
-                    <h5>Cheese Puff</h5>
-                    <p>Found at: TJ's</p>
-                   </div>
-                 </li>
-                
-                 <li class="span4">
-                    <div class="thumbnail">
-                    <%= image_tag("yogurt.jpg", :alt => "Yogurt") %>
-                    <h5>Greek Yogurt</h5>
-                    <p>Found at TJ's</p>
-                    </div>
-                 </li>
-                 
-                 <li class="span4">
-                    <div class="thumbnail">
-                    <%= image_tag("udis.jpg", :alt => "Udis") %>
-                    <h5>Udis Bread</h5>
-                    <p>Found at TJ's</p>
-                    </div>
-                 </li>
-    
-                </div> <!--end of inactive items-->
+                 <% else %>
+                  <!--inactive items-->
+                  <div class="item"> 
+                  <% group.each do |product|%>
+                    <li class="span4">
+                      <div class="thumbnail">
+                      <%= image_tag(product.image_url, :alt => product.name) %>
+                      <h5> <%= product.name%></h5>
+                      <p>Found at: <%= product.store_name%></p>
+                     </div>
+                   </li>                
+                  <% end %>
+                  </div> <!--end of inactive items-->
+                <% end %>
+              <% end %>
                </ul>
                
                <!--<p><a class="btn" href="#">View details &raquo;</a></p>-->
