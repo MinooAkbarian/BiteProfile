@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+
+<!--welcome section-->
+    <div class="container">
+      <div class="message-container">
+        <h2>Welcome to BiteProfile where you can find new products that matches your bite!</h2>
+        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+      </div>
+    </div>
+
+<!--Rows of text and image section-->
+      
+<div class="container-fluid"> <!--today for fluid container-->
+   <div class="row-fluid"> <!--today for fluid container-->
+      <div class="span3">
+           <h3>You look good!</h3>
+           <p>This part is dedicated for profile picture. </p> 
+           <ul class="thumbnails">
+             <li class="span6">
+               <a href="#" class="thumbnail">
+                 <img src="http://s3.amazonaws.com/foodspotting-ec2/people/352348/thumb.txt?1328552994" alt="">
+               </a>
+             </li>
+           </ul>
+           <p><a class="btn" href="#">View details &raquo;</a></p>
+      </div>
+        
+      <div class="span6">
+           <h3>So far, you have spotted:</h3>
+           <p>This part is dedicated for product pictures. </p> <!-- /by Minoo -->
+           <div id="myCarousel" class="carousel slide">
+             <!-- Carousel items -->
+             <div class="carousel-inner">
+               
+               <ul class="thumbnails">
+                 <!--active items-->
+                 <div class="active item">
+  
+                 <li class="span4">
+                   <div class="thumbnail">
+                   <%= image_tag("bread.jpg", :alt => "Bread") %>
+                   <h5>Protein Bread</h5>
+                   <p>Found at: TJ's</p>
+                   </div>
+                 </li>
+                 
+                 <li class="span4">
+                    <div class="thumbnail">
+                    <%= image_tag("akmak.jpg", :alt => "AkMak") %>
+                    <h5>AkMak Cracker</h5>
+                    <p>Found at TJ's</p>
+                    </div>
+                  </li>
+               
+                  
+                  <li class="span4">
+                     <div class="thumbnail">
+                     <%= image_tag("quinoa.jpg", :alt => "Quinoa") %>
+                     <h5>Quinoa Pasta</h5>
+                     <p>Found at TJ's</p>
+                     </div>
+                   </li>
+                   
+                </div> <!--end of active item-->         
+                 
+                <!--inactive items-->
+                <div class="item"> 
+                  <li class="span4">
+                    <div class="thumbnail">
+                    <%= image_tag("cheesepuff.jpg", :alt => "Cheese Puff") %>
+                    <h5>Cheese Puff</h5>
+                    <p>Found at: TJ's</p>
+                   </div>
+                 </li>
+                
+                 <li class="span4">
+                    <div class="thumbnail">
+                    <%= image_tag("yogurt.jpg", :alt => "Yogurt") %>
+                    <h5>Greek Yogurt</h5>
+                    <p>Found at TJ's</p>
+                    </div>
+                 </li>
+                 
+                 <li class="span4">
+                    <div class="thumbnail">
+                    <%= image_tag("udis.jpg", :alt => "Udis") %>
+                    <h5>Udis Bread</h5>
+                    <p>Found at TJ's</p>
+                    </div>
+                 </li>
+    
+                </div> <!--end of inactive items-->
+               </ul>
+               
+               <!--<p><a class="btn" href="#">View details &raquo;</a></p>-->
+             </div> <!--closing div class="carousel-inner"-->
+             <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+             <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+           </div> <!--closing div id="myCarousel"-->
+      </div> <!--closing the span6-->
+     
+      <div class="span3">
+             <h3>You may wanna keep an eye on:</h3>
+             <p>Later on, this section will show followees, friends, and faved products!</p>
+             <p><a class="btn" href="#">View details &raquo;</a></p>
+      </div> <!--closing the span3-->
+      
+   </div> <!--end of row-fluid-->
+      
+
+      <hr>
+
+      <footer>
+        <p>&copy; BiteProfile 2012</p>
+      </footer>
+
+</div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster 
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap-transition.js"></script>
+    <script src="../assets/js/bootstrap-alert.js"></script>
+    <script src="../assets/js/bootstrap-modal.js"></script>
+    <script src="../assets/js/bootstrap-dropdown.js"></script>
+    <script src="../assets/js/bootstrap-scrollspy.js"></script>
+    <script src="../assets/js/bootstrap-tab.js"></script>
+    <script src="../assets/js/bootstrap-tooltip.js"></script>
+    <script src="../assets/js/bootstrap-popover.js"></script>
+    <script src="../assets/js/bootstrap-button.js"></script>
+    <script src="../assets/js/bootstrap-collapse.js"></script>
+    <script src="../assets/js/bootstrap-carousel.js"></script>
+    <script src="../assets/js/bootstrap-typeahead.js"></script>
+    -->      
+   
+  </body>
+</html>

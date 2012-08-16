@@ -1,3 +1,36 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.message-container {
+	width: 100%; /* set width to its container's width */
+	overflow: hidden; /* have the browser resize (autocalculate) the height as needed */
+	background-color: #CCCCCC;
+	padding: 10px;
+	margin: 10px;
+}
+
+div.message-container h2 {
+	text-align: center;
+	margin: 10px;
+}
+
+div.message-container p {
+	text-align: center;
+}
+
+div.sign-in-container {
+	width: 50%; /* set width to its container's width */
+	/*overflow: hidden;  have the browser resize (autocalculate) the height as needed */
+	background-color: #CCFFFF;
+	padding: 10px;
+	margin-left: 300px;
+}
+
+div.sign-in-container p {
+	text-align: center;
+}
+
+/*Set the height for all carousel items for uniformity*/
+div.carousel-inner li.span4 {
+	height: 275px;
+}

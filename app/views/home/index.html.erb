@@ -1,3 +1,23 @@
-<h1>BiteProfile</h1>
-<p>Welcome to BiteProfile where you can find new products that matches your bite!</p>
-<%= render :template => "devise/sessions/new" %>
+ <!--h1>BiteProfile</h1>
+<p>Welcome to BiteProfile where you can find new products that matches your bite!</p>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<!--welcome section-->
+  <div class="container">
+    <div class="message-container">
+      <h2>Welcome to BiteProfile where you can find new products that matches your bite!</h2>
+      <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    </div>
+    
+    <div class="sign-in-container">
+      <p>
+      <%= render :template => "devise/sessions/new" %>
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -58,7 +58,7 @@ BiteProfile::Application.routes.draw do
   # just remember to delete public/index.html.
   
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'home#panel'
   end
 
   root :to => "home#index"
