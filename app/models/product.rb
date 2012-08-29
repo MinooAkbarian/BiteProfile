@@ -10,4 +10,12 @@ class Product < ActiveRecord::Base
     end
     group_of_batches
   end
+  
+  def self.retrieve_in_groups_for_user(user, batch_size)
+    group_of_batches = []
+    self.where("user_id = ?", user.id).find_in_batches(:batch_size => batch_size) do |batch|
+      group_of_batches << batch
+    end
+    group_of_batches
+  end
 end

@@ -39,16 +39,36 @@ describe Product do
       @products_group = Product.retrieve_in_groups(2)
     end
     
-    it "should return an array" do
+    it "should return an array of arrays" do
       @products_group.class.should == Array
-    end
-    
-    it "should return a collection of arrays" do
       @products_group.first.class.should == Array
     end
     
     it "should return a collection of arrays with the right size" do
       @products_group.first.size.should == 2
+    end
+    
+    it "should return a collection of products" do
+      @products_group.first.first.class.should == Product
+    end
+  end  
+  
+  describe "#retrieve_in_groups_for_user()" do
+    before do
+      @user_products_group = Product.retrieve_in_groups_for_user(@user, 2)
+    end
+    it "should return an array of arrays" do
+      @user_products_group.class.should == Array
+      @user_products_group.first.class.should == Array
+    end
+    
+    it "should return a collection of products" do
+      @user_products_group.first.first.class.should == Product
+    end
+    
+    it "should return the right products" do
+      retrieved_product = @user_products_group.first.first
+      @user.products.should include(retrieved_product)
     end
   end
 end

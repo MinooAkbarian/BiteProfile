@@ -3,6 +3,6 @@ class HomeController < ApplicationController
   end
   
   def panel
-    @products_collection = Product.retrieve_in_groups(3)
+    @products_for_current_user = Product.retrieve_in_groups_for_user(current_user, 3)
   end
 end

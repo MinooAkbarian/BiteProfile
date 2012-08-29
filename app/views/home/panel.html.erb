@@ -62,11 +62,12 @@
            <h3>So far, you have spotted:</h3>
            <p>This part is dedicated for product pictures. </p> <!-- /by Minoo -->
            <div id="myCarousel" class="carousel slide">
-             <!-- Carousel items -->
+
+<!--  Carousel items  -->
              <div class="carousel-inner">
                
                <ul class="thumbnails">   
-              <% @products_collection.each do |group| %>                
+              <% @products_for_current_user.each do |group| %>                
                  <% if group == @products_collection.first %>
                    <!--active items-->
                    <div class="active item"> 
