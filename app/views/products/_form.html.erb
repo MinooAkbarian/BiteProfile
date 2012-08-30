@@ -25,6 +25,17 @@
     <%= f.label :store_name %><br />
     <%= f.text_field :store_name %>
   </div>
+
+  <div class="checkboxes">
+   <%= fields_for :allergies do |allergy| %>
+     <% [:milk, :eggs, :peanuts, :tree_nuts, :fish, :shellfish, :soy, :wheat].each do |allergen| %>
+     <div class="checkbox">
+       <%= allergy.check_box allergen %>
+       <%= allergy.label allergen.to_s %>
+     </div>
+     <% end%>
+   <% end %>
+  </div>
   
   <div class="actions">
     <%= f.submit %>
