@@ -27,6 +27,7 @@
   </div>
 
   <div class="checkboxes">
+   <%= Does the product contain any of these?: %>
    <%= fields_for :allergies do |allergy| %>
      <% [:milk, :eggs, :peanuts, :tree_nuts, :fish, :shellfish, :soy, :wheat].each do |allergen| %>
      <div class="checkbox">
