@@ -25,6 +25,7 @@ class ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
+    @allergens =  [:milk, :eggs, :peanuts, :tree_nuts, :fish, :shellfish, :soy, :wheat]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +36,15 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @allergens =  [:milk, :eggs, :peanuts, :tree_nuts, :fish, :shellfish, :soy, :wheat]
+    
   end
 
   # POST /products
   # POST /products.json
   def create
     @product = Product.new(params[:product])
+    @product.add_allergies_from_allergens(params[:allergies])
 
     respond_to do |format|
       if @product.save

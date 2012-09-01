@@ -31,5 +31,4 @@ describe Allergy do
     @user.allergies.should include(@allergy1)
     @product.allergies.should include(@allergy2)
   end
-
 end

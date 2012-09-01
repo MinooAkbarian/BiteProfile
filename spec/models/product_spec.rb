@@ -71,6 +71,17 @@ describe Product do
       @user.products.should include(retrieved_product)
     end
   end
+  
+  describe "#add_allergies_from_allergens" do
+    it "should take a hash with allergens names" do
+      @product.add_allergies_from_allergens({:milk => 0, :eggs => 1})
+    end
+    it "should set allergies for the product" do
+      @product.add_allergies_from_allergens({:milk => 0, :eggs => 1})
+      @product.allergies.first.class.should == Allergy
+      @product.allergies.first.allergen.should == 'eggs'    
+    end
+  end
 end
 
 

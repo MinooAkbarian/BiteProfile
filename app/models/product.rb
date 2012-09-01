@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :user_id, :image_url, :store_name
+  attr_accessible :name, :user_id, :image_url, :store_name, :allergies
   belongs_to :user
   has_many :allergies, :as => :allergable
   
@@ -17,5 +17,15 @@ class Product < ActiveRecord::Base
       group_of_batches << batch
     end
     group_of_batches
+  end
+  
+  def add_allergies_from_allergens(allergens)
+    allergies = []
+    allergens.each do |allergen, value|
+      if value == 1
+        allergies << Allergy.find_or_create_by_allergen(allergen.to_s)
+      end
+    end
+    self.allergies = allergies
   end
 end
