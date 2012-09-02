@@ -5,6 +5,20 @@
   <%= @product.name %>
 </p>
 
+<% if @product.allergies.size > 0 %>
+  <p>
+    <b>Contains:</b>
+    <% @product.allergies.each do |allergy| %>
+      <%= allergy.allergen.capitalize %>
+    <% end %>
+  </p>
+<% end %>
+
+<p>
+  <b>Store:</b>
+  <%= @product.store_name %>
+</p>
+
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

@@ -8,6 +8,10 @@ describe ProductsController do
     {}
   end
   
+  def valid_allergens
+    { :wheat => 1, :fish => 0, :peanuts => 0 }
+  end
+  
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # ProductsController. Be sure to keep this updated too.
@@ -50,18 +54,29 @@ describe ProductsController do
     describe "with valid params" do
       it "creates a new Product" do
         expect {
-          post :create, {:product => valid_attributes}, valid_session
+          post :create, {:product => valid_attributes, :allergies => valid_allergens}, valid_session
         }.to change(Product, :count).by(1)
       end
-
+      
+      it "creates new Allergies when allergens are passed" do
+        expect {
+          post :create, {:product => valid_attributes, :allergies => valid_allergens}, valid_session
+        }.to change(Allergy, :count).by(1)
+      end
+      
+      it "creates Allergies with the right parameters" do
+        post :create, {:product => valid_attributes, :allergies => valid_allergens}, valid_session
+        Allergy.last.allergable_id.should == Product.last.id
+      end
+      
       it "assigns a newly created product as @product" do
-        post :create, {:product => valid_attributes}, valid_session
+        post :create, {:product => valid_attributes, :allergies => valid_allergens}, valid_session
         assigns(:product).should be_a(Product)
         assigns(:product).should be_persisted
       end
 
       it "redirects to the created product" do
-        post :create, {:product => valid_attributes}, valid_session
+        post :create, {:product => valid_attributes, :allergies => valid_allergens}, valid_session
         response.should redirect_to(Product.last)
       end
     end
@@ -70,14 +85,14 @@ describe ProductsController do
       it "assigns a newly created but unsaved product as @product" do
         # Trigger the behavior that occurs when invalid params are submitted
         Product.any_instance.stub(:save).and_return(false)
-        post :create, {:product => {}}, valid_session
+        post :create, {:product => {}, :allergies => valid_allergens}, valid_session
         assigns(:product).should be_a_new(Product)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Product.any_instance.stub(:save).and_return(false)
-        post :create, {:product => {}}, valid_session
+        post :create, {:product => {}, :allergies => valid_allergens}, valid_session
         response.should render_template("new")
       end
     end

@@ -6,6 +6,8 @@ describe Product do
     4.times do
       @product = Product.create(:name => "bread_#{rand(10)}", :user_id => @user.id, :image_url => 'image/url', :store_name => 'Trader Joes')
     end
+    @product_1 = Product.create(:name => "bread_#{rand(10)}", :user_id => @user.id, :image_url => 'image/url', :store_name => 'Trader Joes')
+    @allergy = Allergy.create(:allergen => 'fish', :allergable_id => @product.id, :allergable_type => @product.class.name)
   end
   
   #relationships
@@ -17,7 +19,10 @@ describe Product do
   it 'Should have an array of allergies' do
    @product.allergies.class.should == Array 
   end
-   
+  
+  it 'should have the right allergies' do
+    @product.allergies.should include(@allergy)
+  end 
    
   #attributes
   it 'Should have a name' do
@@ -73,13 +78,24 @@ describe Product do
   end
   
   describe "#add_allergies_from_allergens" do
-    it "should take a hash with allergens names" do
-      @product.add_allergies_from_allergens({:milk => 0, :eggs => 1})
+    it "should create allergies" do
+      @product_1.add_allergies_from_allergens({:wheat => 1, :peanuts => 0})
+      Allergy.find_by_allergen("wheat").should_not be_nil
     end
+    
+    it "should relate the newly created allergy to the product" do
+      @product_1.add_allergies_from_allergens({:tree_nuts => 1, :peanuts => 0})
+      Allergy.find_by_allergen("tree_nuts").allergable_id.should == @product_1.id
+    end
+    
+    it "should save the allergies" do
+      @product_1.add_allergies_from_allergens({:pineapple => 1, :peanuts => 0})
+      Allergy.find_by_allergen("pineapple").new_record?.should be_false
+    end  
+    
     it "should set allergies for the product" do
-      @product.add_allergies_from_allergens({:milk => 0, :eggs => 1})
-      @product.allergies.first.class.should == Allergy
-      @product.allergies.first.allergen.should == 'eggs'    
+      @product_1.add_allergies_from_allergens({:gluten => 1, :peanuts => 0})
+      @product_1.allergies.first.allergen.should == 'gluten'
     end
   end
 end
