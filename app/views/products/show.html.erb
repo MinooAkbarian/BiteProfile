@@ -7,10 +7,12 @@
 
 <% if @product.allergies.size > 0 %>
   <p>
-    <b>Contains:</b>
-    <% @product.allergies.each do |allergy| %>
-      <%= allergy.allergen.capitalize %>
-    <% end %>
+    <b>Tagged as:</b>
+    <ul>
+      <% @product.allergies.each do |allergy| %>
+        <li><%= (allergy.allergen.capitalize + " Free") %></li>
+      <% end %>
+    </ul>
   </p>
 <% end %>
 

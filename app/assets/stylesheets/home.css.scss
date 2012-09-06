@@ -1,10 +1,11 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 div.message-container {
 	width: 100%; /* set width to its container's width */
 	overflow: hidden; /* have the browser resize (autocalculate) the height as needed */
-	background-color: #CCCCCC;
+	background-color: #CD005A;
 	padding: 10px;
 	margin: 10px;
 }
@@ -21,7 +22,7 @@ div.message-container p {
 div.sign-in-container {
 	width: 50%; /* set width to its container's width */
 	/*overflow: hidden;  have the browser resize (autocalculate) the height as needed */
-	background-color: #CCFFFF;
+	background-color: #DFD211;
 	padding: 10px;
 	margin-left: 300px;
 }
