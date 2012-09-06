@@ -5,6 +5,7 @@ describe "products/edit" do
     @product = assign(:product, stub_model(Product,
       :name => "MyString"
     ))
+    @allergens = [:milk, :fish, :peanuts]
   end
 
   it "renders the edit product form" do
