@@ -20,10 +20,12 @@ class Product < ActiveRecord::Base
   end
   
   def add_allergies_from_allergens(allergens)
-    allergens.each do |allergen, value|
-      if value.to_s == '1'
-        Allergy.create(:allergen => allergen.to_s, :allergable_id => self.id, :allergable_type => 'Product')
+    if allergens != nil
+      allergens.each do |allergen, value|
+        if value.to_s == '1'
+          Allergy.create(:allergen => allergen.to_s, :allergable_id => self.id, :allergable_type => 'Product')
+        end
       end
     end
-   end
+  end
 end

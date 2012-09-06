@@ -5,6 +5,7 @@ describe "products/new" do
     assign(:product, stub_model(Product,
       :name => "MyString"
     ).as_new_record)
+    @allergens = [:milk, :fish, :peanuts]
   end
 
   it "renders new product form" do
