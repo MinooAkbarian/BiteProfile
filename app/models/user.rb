@@ -25,4 +25,14 @@ class User < ActiveRecord::Base
       end
     return allergy_to_allergen_list
   end
+  
+  def add_allergies_from_allergens(allergens)
+    if allergens != nil
+      allergens.each do |allergen, value|
+        if value.to_s == '1'
+          Allergy.create(:allergen => allergen.to_s, :allergable_id => self.id, :allergable_type => 'User')
+        end
+      end
+    end
+  end
 end
