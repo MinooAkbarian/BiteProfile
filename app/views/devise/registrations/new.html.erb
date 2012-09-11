@@ -14,6 +14,20 @@
 
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
+  
+  <div class="checkboxes">
+    <h3> Your bites are: </h3>
+    <%= fields_for :allergies do |allergy| %>
+      <% @allergens.each do |allergen| %>
+      <div class="checkbox">
+        <p>
+         <%= allergy.check_box allergen %>
+         <%= allergy.label (allergen.to_s + " free") %>
+        </p>
+      </div>
+      <% end%>
+    <% end %>
+   </div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
