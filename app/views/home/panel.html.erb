@@ -67,8 +67,8 @@
              <div class="carousel-inner">
                
                <ul class="thumbnails">   
-              <% @products_for_current_user.each do |group| %>                
-                 <% if group == @products_collection.first %>
+              <% @products_for_current_user.each_with_index do |group, index| %>                
+                 <% if index == 0%>
                    <!--active items-->
                    <div class="active item"> 
                    <% group.each do |product|%>

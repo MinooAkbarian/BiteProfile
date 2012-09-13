@@ -43,7 +43,8 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(params[:product])
-    
+    @product.user_id = current_user.id
+
     respond_to do |format|
       if @product.save
         @product.add_allergies_from_allergens(params[:allergies])
