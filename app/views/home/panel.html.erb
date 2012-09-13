@@ -74,7 +74,7 @@
                    <% group.each do |product|%>
                      <li class="span4">
                        <div class="thumbnail">
-                       <%= image_tag(product.image_url, :alt => product.name) %>
+                       <%= link_to( image_tag(product.image_url, :alt => product.name), product) %>
                        <h5><%= product.name %></h5>
                        <p>Found at: <%= product.store_name %></p>
                        </div>
@@ -88,7 +88,7 @@
                   <% group.each do |product|%>
                     <li class="span4">
                       <div class="thumbnail">
-                      <%= image_tag(product.image_url, :alt => product.name) %>
+                      <%= link_to( image_tag(product.image_url, :alt => product.name), product) %>
                       <h5> <%= product.name%></h5>
                       <p>Found at: <%= product.store_name%></p>
                      </div>
