@@ -26,7 +26,17 @@
                  <div class="row">
                   <div class="span12">
                     <%= render 'layouts/messages' %>
-                    <%= yield %>
+                    <!-- Here put anything you want to be displayed across the whole site -->
+                    <% if current_page?(new_user_session_path) || 
+                          current_page?(edit_user_registration_path) || 
+                          current_page?(new_user_registration_path) %>
+                      <h2>BiteProfile</h2>
+                      <div class='form-container'>
+                        <%= yield %>
+                      </div>
+                    <% else %>
+                      <%= yield %>
+                    <% end %>
                   </div>
                 </div>
                 <footer>
