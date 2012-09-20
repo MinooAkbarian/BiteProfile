@@ -1,11 +1,18 @@
-<div class="container-fluid">
-   <div class="row-fluid"> 
-    <%= render 'added_by_user' %>
-   </div>
-
-      <hr>
-
-      <footer>
-        <p>&copy; BiteProfile 2012</p>
-      </footer>
+<div class="container-fluid" id="panel">
+  <div class="tabs">
+    <ul>
+      <li id="tab-1" class="active"><a>Added by you</a></li>
+      <li id="tab-2"><a>Bite match</a></li>
+      <li id="tab-3"><a>Search</a></li>
+    </ul>
+  </div>
+   
+  <div class="row-fluid" id="panel-content"> 
+    <div class="default tab">
+      <%= render 'added_by_user' %>
+    </div>
+  </div>
+    <footer>
+      <p>&copy; BiteProfile 2012</p>
+    </footer>
 </div>

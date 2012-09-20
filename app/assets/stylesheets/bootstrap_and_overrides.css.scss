@@ -1,4 +1,30 @@
 @import "bootstrap";
-body { padding-top: 60px; }
+body { 
+	padding-top: 60px;
+	background-color: #949494;
+	color: black;
+}
+
+nav.navbar-inner {
+	background-image: none;
+	background-color: #113838;
+}
+
+.navbar .brand {
+	color: white;
+}
+
+.navbar .nav li a {
+	color: #4F9E9E;
+}
+
+a {
+	color: white;
+}
+
 @import "bootstrap-responsive";
+
+.row-fluid ul.thumbnails li.span4 {
+	width: 210px;
+}
 

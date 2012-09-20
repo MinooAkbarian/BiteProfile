@@ -35,3 +35,59 @@ div.sign-in-container p {
 div.carousel-inner li.span4 {
 	height: 275px;
 }
+
+div#panel-content {
+	overflow: hidden;
+	background-color: #4F9E9E;
+	-moz-border-radius-topright: 10px;
+	border-top-right-radius: 10px;
+}
+
+div#panel-content div.thumbnail {
+	background-color: #949494;
+	color: #113838;
+}
+
+div#panel-content div.default-tab {
+	width: 100%;
+	overflow: hidden;
+}
+
+div#panel-content div.tab div.span6 {
+	float: none;
+	width: 915px;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 40px 0px;
+}
+
+/*Tabs styles*/
+div.tabs ul {
+	overflow: hidden;
+	margin: 0px;
+}
+
+div.tabs ul li {
+	display: inline-block;
+	float: left;
+	margin-right: 2px;
+	padding: 5px 10px 10px 10px;
+	-moz-border-radius-topleft: 8px;
+	border-top-left-radius: 8px;
+	-moz-border-radius-topright: 8px;
+	border-top-right-radius: 8px;
+	background-color: #113838;
+}
+
+div.tabs ul li.active {
+	background-color: #4F9E9E;
+}
+
+div.tabs ul li a {
+	text-decoration: none;
+}
+
+/*Footer*/
+footer {
+	margin-top: 50px;
+}
