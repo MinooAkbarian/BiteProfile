@@ -1,0 +1,39 @@
+<div class="span6">
+   <h3>So far, you have spotted:</h3>
+   <div id="myCarousel" class="carousel slide">
+   <!--  Carousel items  -->
+    <div class="carousel-inner">
+      <ul class="thumbnails">   
+      <% @products_for_current_user.each_with_index do |group, index| %>                
+        <% if index == 0 %><!--active items-->
+          <div class="active item"> 
+           <% group.each do |product|%>
+             <li class="span4">
+               <div class="thumbnail">
+               <%= link_to( image_tag(product.image_url, :alt => product.name), product) %>
+               <h5><%= product.name %></h5>
+               <p>Found at: <%= product.store_name %></p>
+               </div>
+             </li>                 
+           <% end %>                 
+          </div> <!--end of active item-->                    
+        <% else %><!--inactive items-->
+          <div class="item"> 
+          <% group.each do |product|%>
+            <li class="span4">
+              <div class="thumbnail">
+              <%= link_to( image_tag(product.image_url, :alt => product.name), product) %>
+              <h5><%= product.name%></h5>
+              <p>Found at: <%= product.store_name%></p>
+             </div>
+           </li>                
+          <% end %>
+          </div> <!--end of inactive items-->
+        <% end %>
+      <% end %>
+      </ul>
+     </div>
+     <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+     <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+   </div>
+</div>
