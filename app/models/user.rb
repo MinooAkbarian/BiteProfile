@@ -35,4 +35,29 @@ class User < ActiveRecord::Base
       end
     end
   end
+  
+  def bite_match(number)
+    matches = []
+    self.allergies.each do |allergy|
+      found_allergy = Product.find_by_allergen(allergy.allergen)
+      (matches += found_allergy) if found_allergy != nil
+    end
+    distribute_in_groups(matches, number)
+  end
+  
+  def distribute_in_groups(unsorted_array, number)
+  sorted_array = []
+  temp_array = []
+    unsorted_array.each do |item|
+      if temp_array.size < number
+        temp_array << item
+      else
+        sorted_array << temp_array
+        temp_array = []
+        temp_array << item
+      end
+    end
+    sorted_array << temp_array if temp_array.size > 0
+    sorted_array
+  end
 end

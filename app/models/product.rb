@@ -18,6 +18,14 @@ class Product < ActiveRecord::Base
     end
     group_of_batches
   end
+
+  def self.find_by_allergen(allergen)
+    group_of_products = []
+    Allergy.where("allergen = ? AND allergable_type = ?", allergen, 'Product').all.each do |allergy|
+      group_of_products << allergy.allergable
+    end    
+    group_of_products.compact!
+  end
   
   def add_allergies_from_allergens(allergens)
     if allergens != nil

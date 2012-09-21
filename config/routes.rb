@@ -4,6 +4,8 @@ BiteProfile::Application.routes.draw do
   match "/index" => "home#index"
   
   match "/panel" => "home#panel"
+  
+  match "/panel/user_added" => "home#user_added"
 
   devise_for :users, :controllers => {:registrations => "registrations"}
 

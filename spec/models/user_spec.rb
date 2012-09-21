@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe User do
   #relationships
   before do
@@ -8,6 +7,7 @@ describe User do
     @user = User.create(:name => 'minoo', :email => 'biteprofile@gmail.com', :password => 'letstest', :image_url => 'image/url')
     @product = Product.create(:name => 'bread', :user_id => @user.id)
     @allergy = Allergy.create(:allergable_id => @user.id, :allergable_type => @user.class.name, :allergen => 'milk')
+    @allergy2 = Allergy.create(:allergable_id => @product.id, :allergable_type => @product.class.name, :allergen => 'milk')
   end
   
   it "Should have an array of products" do
@@ -92,6 +92,20 @@ describe User do
     it "should set allergies for the user" do
       @user2.add_allergies_from_allergens({:gluten => 1, :peanuts => 0})
       @user2.allergies.first.allergen.should == 'gluten'
+    end
+  end
+  
+  describe "#bite_match(items_group)" do
+    it "should return an array of arrays" do
+      @user.bite_match(2).class.should == Array
+    end
+    
+    it "should return a collection of Products" do
+      @user.bite_match(2).first.first.class.should == Product
+    end
+    
+    it "should return products that match the user's bite" do
+      @user.bite_match(2).first.first.allergies.first.allergen.should == @user.allergies.first.allergen
     end
   end
 end

@@ -6,8 +6,10 @@ describe Product do
     4.times do
       @product = Product.create(:name => "bread_#{rand(10)}", :user_id => @user.id, :image_url => 'image/url', :store_name => 'Trader Joes')
     end
-    @product_1 = Product.create(:name => "bread_#{rand(10)}", :user_id => @user.id, :image_url => 'image/url', :store_name => 'Trader Joes')
+    @product_1 = Product.create(:name => "bread_#{rand(10)}", :user_id => @user.id, :image_url => 'image/url', :store_name => 'Trader Joes')    
+    @product_2 = Product.create(:name => "bread_#{rand(10)}", :user_id => @user.id, :image_url => 'image/url', :store_name => 'Trader Joes')
     @allergy = Allergy.create(:allergen => 'fish', :allergable_id => @product.id, :allergable_type => @product.class.name)
+    @allergy_2 = Allergy.create(:allergen => 'fish', :allergable_id => @product_2.id, :allergable_type => @product.class.name)
   end
   
   #relationships
@@ -56,12 +58,32 @@ describe Product do
     it "should return a collection of products" do
       @products_group.first.first.class.should == Product
     end
-  end  
+  end
+  
+  describe "#find_by_allergen()" do
+    before do
+      @products_from_allergen = Product.find_by_allergen('fish')
+    end
+    
+    it "should return an array of arrays" do
+      @products_from_allergen.class.should == Array
+    end
+    
+    it "should return a collection of products" do
+      @products_from_allergen.first.class.should == Product
+    end
+    
+    it "should return all products related to the passed allergen" do
+      @products_from_allergen.first.id.should == @product.id
+      @products_from_allergen.first.allergies.first.allergen.should == 'fish'
+    end
+  end
   
   describe "#retrieve_in_groups_for_user()" do
     before do
       @user_products_group = Product.retrieve_in_groups_for_user(@user, 2)
     end
+    
     it "should return an array of arrays" do
       @user_products_group.class.should == Array
       @user_products_group.first.class.should == Array
