@@ -17,8 +17,36 @@
 //= require bootstrap-transition.js
 //= require bootstrap-carousel.js
 
-$(document).ready(function(){
-  $('.carousel').carousel({
+$(document).ready(function() {
+  $('.carousel').carousel( {
 		interval: 10000
 	});
 });
+
+$(document).ready( function() {
+  $('#tab-2').click(function() {
+    $('#tab-2').addClass('active')
+    $('#tab-1').removeClass('active')
+    $('#tab-3').removeClass('active')
+    $.get('/panel/user_added', function(data) {
+      $('div.tab').html(data);
+    });
+  });
+  
+  $('#tab-3').click(function() {
+    $('#tab-3').addClass('active')
+    $('#tab-1').removeClass('active')
+    $('#tab-2').removeClass('active')
+    $('div.tab').html('<p>Search:</p>')
+  });
+  
+  $('#tab-1').click(function() {
+    $('#tab-1').addClass('active')
+    $('#tab-2').removeClass('active')
+    $('#tab-3').removeClass('active')
+    $.get('/panel/bite_match', function(data) {
+      $('div.tab').html(data);
+    });
+    
+  }); 
+})
