@@ -23,30 +23,48 @@ $(document).ready(function() {
 	});
 });
 
+
 $(document).ready( function() {
-  $('#tab-2').click(function() {
-    $('#tab-2').addClass('active')
-    $('#tab-1').removeClass('active')
-    $('#tab-3').removeClass('active')
+  var biteMatch = $('#tab-1');
+  var addedByYou = $('#tab-2');
+  var search = $('#tab-3');
+  
+  // var tabs = [biteMatch, addedByYou, search];
+    
+  // for (i = 0; i < 3; i++) {
+  //   tabs[i].click(function() {
+  //       tabs[0].removeClass('active');
+  //       tabs[1].removeClass('active');
+  //       tabs[2].removeClass('active');
+  //       tabs[i].addClass('active');
+  //   });
+  // }
+
+  addedByYou.click(function() {
+    addedByYou.addClass('active')
+    biteMatch.removeClass('active')
+    search.removeClass('active')
     $.get('/panel/user_added', function(data) {
       $('div.tab').html(data);
     });
   });
   
-  $('#tab-3').click(function() {
-    $('#tab-3').addClass('active')
-    $('#tab-1').removeClass('active')
-    $('#tab-2').removeClass('active')
-    $('div.tab').html('<p>Search:</p>')
-  });
-  
-  $('#tab-1').click(function() {
-    $('#tab-1').addClass('active')
-    $('#tab-2').removeClass('active')
-    $('#tab-3').removeClass('active')
-    $.get('/panel/bite_match', function(data) {
+  search.click(function() {
+    search.addClass('active')
+    biteMatch.removeClass('active')
+    addedByYou.removeClass('active')
+    $.get('/panel/search', function(data) {
       $('div.tab').html(data);
     });
-    
+  });
+  
+  biteMatch.click(function() {
+    biteMatch.addClass('active')
+    addedByYou.removeClass('active')
+    search.removeClass('active')
+    $.get('/panel/bite_match', function(data) {
+      $('div.tab').html(data);
+    }); 
   }); 
-})
+  
+});

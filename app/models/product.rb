@@ -3,6 +3,21 @@ class Product < ActiveRecord::Base
   belongs_to :user
   has_many :allergies, :as => :allergable
   
+  def self.search(allergens)
+    if allergens
+      products = []
+      allergens.each do |allergen, value|
+        if value.to_s == '1'
+          product_found = find_by_allergen(allergen.to_s)
+          products += product_found if product_found
+        end
+      end
+      products
+    else
+      find(:all)
+    end
+  end
+  
   def self.retrieve_in_groups(batch_size)
     group_of_batches = []
     self.find_in_batches(:batch_size => batch_size) do |batch|
