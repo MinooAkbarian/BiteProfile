@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    @allergens =  [:milk, :eggs, :peanuts, :tree_nuts, :fish, :shellfish, :soy, :wheat]
   end
   
   def panel

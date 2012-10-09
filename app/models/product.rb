@@ -25,12 +25,10 @@ class Product < ActiveRecord::Base
       allergens.each do |allergen, value|
         if value.to_s == '1'
           product_found = find_by_allergen(allergen.to_s)
-          puts "--------------"
-          puts product_found.inspect
-          products += product_found if (product_found && !(products.include?(product_found.first))) 
+          products += product_found if product_found
         end
       end
-      distribute_in_groups(products, 4)
+      distribute_in_groups(products.uniq!, 4)
     else
       distribute_in_groups(find(:all), 4)
     end
