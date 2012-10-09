@@ -3,18 +3,36 @@ class Product < ActiveRecord::Base
   belongs_to :user
   has_many :allergies, :as => :allergable
   
+  def self.distribute_in_groups(unsorted_array, number)
+  sorted_array = []
+  temp_array = []
+    unsorted_array.each do |item|
+      if temp_array.size < number
+        temp_array << item
+      else
+        sorted_array << temp_array
+        temp_array = []
+        temp_array << item
+      end
+    end
+    sorted_array << temp_array if temp_array.size > 0
+    sorted_array
+  end
+  
   def self.search(allergens)
     if allergens
       products = []
       allergens.each do |allergen, value|
         if value.to_s == '1'
           product_found = find_by_allergen(allergen.to_s)
-          products += product_found if product_found
+          puts "--------------"
+          puts product_found.inspect
+          products += product_found if (product_found && !(products.include?(product_found.first))) 
         end
       end
-      products
+      distribute_in_groups(products, 4)
     else
-      find(:all)
+      distribute_in_groups(find(:all), 4)
     end
   end
   
@@ -39,7 +57,7 @@ class Product < ActiveRecord::Base
     Allergy.where("allergen = ? AND allergable_type = ?", allergen, 'Product').all.each do |allergy|
       group_of_products << allergy.allergable
     end    
-    group_of_products.compact!
+    group_of_products.include?(nil) ? group_of_products.compact! : group_of_products
   end
   
   def add_allergies_from_allergens(allergens)

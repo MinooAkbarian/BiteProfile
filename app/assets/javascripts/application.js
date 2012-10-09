@@ -25,46 +25,51 @@ $(document).ready(function() {
 
 
 $(document).ready( function() {
-  var biteMatch = $('#tab-1');
-  var addedByYou = $('#tab-2');
-  var search = $('#tab-3');
+  var biteMatchTab = $('#tab-1');
+  var addedByYouTab = $('#tab-2');
+  var searchTab = $('#tab-3');
   
-  // var tabs = [biteMatch, addedByYou, search];
-    
-  // for (i = 0; i < 3; i++) {
-  //   tabs[i].click(function() {
-  //       tabs[0].removeClass('active');
-  //       tabs[1].removeClass('active');
-  //       tabs[2].removeClass('active');
-  //       tabs[i].addClass('active');
-  //   });
-  // }
-
-  addedByYou.click(function() {
-    addedByYou.addClass('active')
-    biteMatch.removeClass('active')
-    search.removeClass('active')
+  addedByYouTab.click(function() {
+    addedByYouTab.addClass('active')
+    biteMatchTab.removeClass('active')
+    searchTab.removeClass('active')
     $.get('/panel/user_added', function(data) {
       $('div.tab').html(data);
     });
   });
   
-  search.click(function() {
-    search.addClass('active')
-    biteMatch.removeClass('active')
-    addedByYou.removeClass('active')
+  searchTab.click(function() {
+    searchTab.addClass('active')
+    biteMatchTab.removeClass('active')
+    addedByYouTab.removeClass('active')
     $.get('/panel/search', function(data) {
       $('div.tab').html(data);
     });
+    
   });
   
-  biteMatch.click(function() {
-    biteMatch.addClass('active')
-    addedByYou.removeClass('active')
-    search.removeClass('active')
+  biteMatchTab.click(function() {
+    biteMatchTab.addClass('active')
+    addedByYouTab.removeClass('active')
+    searchTab.removeClass('active')
     $.get('/panel/bite_match', function(data) {
       $('div.tab').html(data);
     }); 
-  }); 
+  });
   
+  $('#search-submit').click(function(e) {
+    e.preventDefault();
+    $.get('/products', {
+      allergies: {'milk' : Number($('#allergies_milk').is(":checked")),
+                  'eggs' : Number($('#allergies_eggs').is(":checked")), 
+                  'peanuts' : Number($('#allergies_peanuts').is(":checked")), 
+                  'tree_nuts' : Number($('#allergies_tree_nuts').is(":checked")), 
+                  'fish' : Number($('#allergies_fish').is(":checked")), 
+                  'shellfish' : Number($('#allergies_shellfish').is(":checked")), 
+                  'soy' : Number($('#allergies_soy').is(":checked")), 
+                  'wheat' : Number($('#allergies_wheat').is(":checked"))}
+    }, function(data) {
+      $('div.tab').html($(data).find('div.row-fluid'));
+    });
+  });
 });
