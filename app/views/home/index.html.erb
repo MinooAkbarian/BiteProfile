@@ -1,15 +1,14 @@
- <!--h1>BiteProfile</h1>
-<p>Welcome to BiteProfile where you can find new products that matches your bite!</p>-->
-
 <!DOCTYPE html>
 <html lang="en">
 <body>
 
   <div class="container">
-      <h2>Welcome to BiteProfile where you can find new products that match your bite!</h2>
+      <h2 id="home-main-title">Welcome to BiteProfile</h2> 
+      <div>
+        <h3 class="slogan">Find Products That <span>Match Your Bite!</span></h3>
+        <div> <%= render :template => '/home/search_form' %> </div>
+      </div>
     </div>
-  
-  <%= render :template => '/home/search_form' %>
   
 </body>
 </html>

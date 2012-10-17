@@ -29,7 +29,7 @@
   <div class="checkboxes">
    <h3> This product is: </h3>
    <%= fields_for :allergies do |allergy| %>
-     <% @allergens.each do |allergen| %>
+     <% ApplicationHelper::Allergens.each do |allergen| %>
      <div class="checkbox">
        <p>
         <%= allergy.check_box allergen %>

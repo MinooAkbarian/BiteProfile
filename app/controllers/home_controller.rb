@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @allergens =  [:milk, :eggs, :peanuts, :tree_nuts, :fish, :shellfish, :soy, :wheat]
   end
   
   def panel
@@ -16,6 +15,5 @@ class HomeController < ApplicationController
   end
   
   def search_form
-    @allergens =  [:milk, :eggs, :peanuts, :tree_nuts, :fish, :shellfish, :soy, :wheat]
   end
 end

@@ -28,7 +28,8 @@ class Product < ActiveRecord::Base
           products += product_found if product_found
         end
       end
-      distribute_in_groups(products.uniq!, 4)
+      products.uniq!
+      distribute_in_groups(products, 4)
     else
       distribute_in_groups(find(:all), 4)
     end

@@ -1,9 +1,11 @@
 <div class="span6">
   <div class="checkboxes">
-    <h3>Select the options that match what you are looking for:</h3>
+    <% if !current_page?('/')%>
+    <h3>Select the options that match what your bite:</h3>
+    <% end %>
     <%= form_tag products_path, :method => 'get' do %>
       <%= fields_for :allergies do |allergy| %>
-        <% @allergens.each do |allergen| %>
+        <% ApplicationHelper::Allergens.each do |allergen| %>
           <div class="checkbox">
             <p>
             <%= allergy.check_box allergen %>

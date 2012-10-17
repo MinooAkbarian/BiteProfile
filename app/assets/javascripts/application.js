@@ -33,6 +33,7 @@ $(document).ready( function() {
     addedByYouTab.addClass('active')
     biteMatchTab.removeClass('active')
     searchTab.removeClass('active')
+    $('div.tab').removeClass('search-tab')
     $.get('/panel/user_added', function(data) {
       $('div.tab').html(data);
     });
@@ -42,6 +43,7 @@ $(document).ready( function() {
     searchTab.addClass('active')
     biteMatchTab.removeClass('active')
     addedByYouTab.removeClass('active')
+    $('div.tab').addClass('search-tab')
     $.get('/panel/search', function(data) {
       $('div.tab').html(data);
     });
@@ -52,12 +54,13 @@ $(document).ready( function() {
     biteMatchTab.addClass('active')
     addedByYouTab.removeClass('active')
     searchTab.removeClass('active')
+    $('div.tab').removeClass('search-tab')
     $.get('/panel/bite_match', function(data) {
       $('div.tab').html(data);
     }); 
   });
   
-  $('#search-submit').click(function(e) {
+  $('.search-tab #search-submit').click(function(e) {
     e.preventDefault();
     $.get('/products', {
       allergies: {'milk' : Number($('#allergies_milk').is(":checked")),

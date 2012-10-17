@@ -25,7 +25,6 @@ class ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
-    @allergens =  [:milk, :eggs, :peanuts, :tree_nuts, :fish, :shellfish, :soy, :wheat]
 
     respond_to do |format|
       format.html # new.html.erb
